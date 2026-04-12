@@ -4,6 +4,7 @@
 const express=require("express");
 const app=express();
 
+// That line is very important when you’re working with HTML forms in Express:
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/form",(req,res)=>{
@@ -22,4 +23,3 @@ app.listen(300,()=>{
     console.log(`http://localhost:300`)
 })
 
-// That line is very important when you’re working with HTML forms in Express:
