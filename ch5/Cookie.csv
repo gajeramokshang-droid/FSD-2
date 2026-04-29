@@ -1,0 +1,3 @@
+﻿Option,Description,Format,Example Usage
+maxAge,Sets the cookie's lifetime in milliseconds from the current time.,Number (milliseconds),{ maxAge: 10000 } (expires in 10 seconds)
+expires,Sets the cookie's expiration as a specific UTC date/time.,Date object,{ expires: new Date(Date.now() + 10000) }

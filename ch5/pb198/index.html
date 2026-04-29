@@ -1,0 +1,28 @@
+<!-- Write a script to meet following requirement using ExpressJS.
+1. Create index.html which contains login page having fields like Username, Password & Gender. Open it on localhost.
+2. After clicking on submit button, it should jump to savesession page. store username & gender in session.
+3. After saving session, redirect to fetchsession page and read session values. Put a logout link button here
+.4. After clicking logout button, it jumps to deletesession page.5. Destroy the session on this page & 
+redirect to index.html page. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/submit" method="post">
+           <label for="username">Name:</label>
+           <input type="text" id="username" name="username" placeholder="Enter your name" title="Username"/><br>
+           <label for="pass">Password:</label>
+           <input type="password" id="pass" name="pass" placeholder="Enter your password" title="Password"/><br>
+            <input type="checkbox" name="jesus" value="id1">Jesus<br>
+             <input type="checkbox" name="jesus" value="id1">Christ<br>
+             <input type="radio" name="gender" id="male">Male<br>
+             <input type="radio" name="gender" id="female">Female<br>
+             <button type="submit">Submit</button>
+             </form>
+</body>
+</html>

@@ -1,0 +1,6 @@
+﻿Option,Description
+maxAge,Sets the cookie's expiry time in milliseconds.
+expires,Sets the cookie's expiry date (e.g., new Date(Date.now() + 900000)).
+httpOnly,If true, the cookie is inaccessible to client-side JavaScript.
+secure,If true, the cookie is only sent over HTTPS.
+sameSite,Controls whether the cookie is sent with cross-site requests (strict, lax, or none).
