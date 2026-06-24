@@ -1,0 +1,227 @@
+                                                  INSTALL MONGODBCOMPASS
+
+Microsoft Windows [Version 10.0.19045.4894]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\LJENG>mongos
+BadValue: error: no args for --configdb
+try 'mongos --help' for more information
+
+C:\Users\LJENG>mongosh
+Current Mongosh Log ID: 6a3b4e7aed0add5ce45574a2
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.10.3
+Using MongoDB:          6.0.8
+Using Mongosh:          1.10.3
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-06-24T08:48:25.078+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use mydb
+switched to db mydb
+mydb> db.createCollection("people")
+mydb> db.people.insertMany([{name:"x",age:20,branch:"IT"},{name:"y",age:25,branch:"CE"},{name:"z",age:30,branch:"CSE"},{name:"a",age:35,branch:"CS"},{name:"b",age:40,branch:"IT"},{name:"x",age:45,bbranch:"CSE"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6a3b4f7eed0add5ce45574a3"),
+    '1': ObjectId("6a3b4f7eed0add5ce45574a4"),
+    '2': ObjectId("6a3b4f7eed0add5ce45574a5"),
+    '3': ObjectId("6a3b4f7eed0add5ce45574a6"),
+    '4': ObjectId("6a3b4f7eed0add5ce45574a7"),
+    '5': ObjectId("6a3b4f7eed0add5ce45574a8")
+  }
+}
+mydb> db.people.find({ age: { $gt: 30 } })
+[
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a6"),
+    name: 'a',
+    age: 35,
+    branch: 'CS'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a7"),
+    name: 'b',
+    age: 40,
+    branch: 'IT'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a8"),
+    name: 'x',
+    age: 45,
+    branch: 'CSE'
+  }
+]
+mydb> db.people.find({age:{$gt:30}})
+[
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a6"),
+    name: 'a',
+    age: 35,
+    branch: 'CS'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a7"),
+    name: 'b',
+    age: 40,
+    branch: 'IT'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a8"),
+    name: 'x',
+    age: 45,
+    branch: 'CSE'
+  }
+]
+mydb> db.people.find({age:{$gte:30}})
+[
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a5"),
+    name: 'z',
+    age: 30,
+    branch: 'CSE'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a6"),
+    name: 'a',
+    age: 35,
+    branch: 'CS'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a7"),
+    name: 'b',
+    age: 40,
+    branch: 'IT'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a8"),
+    name: 'x',
+    age: 45,
+    branch: 'CSE'
+  }
+]
+mydb> db.people.find({age:{$lt:20}})
+
+mydb> db.people.find({age:{lte:30}})
+
+mydb> db.people.find({age:{lt:30}})
+
+mydb> db.people.find({age:{$ne:"IT"}})
+[
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a3"),
+    name: 'x',
+    age: 20,
+    branch: 'IT'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a4"),
+    name: 'y',
+    age: 25,
+    branch: 'CE'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a5"),
+    name: 'z',
+    age: 30,
+    branch: 'CSE'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a6"),
+    name: 'a',
+    age: 35,
+    branch: 'CS'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a7"),
+    name: 'b',
+    age: 40,
+    branch: 'IT'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a8"),
+    name: 'x',
+    age: 45,
+    branch: 'CSE'
+  }
+]
+mydb> db.people.find({branch:{$in:['IT','CSE']}})
+[
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a3"),
+    name: 'x',
+    age: 20,
+    branch: 'IT'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a5"),
+    name: 'z',
+    age: 30,
+    branch: 'CSE'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a7"),
+    name: 'b',
+    age: 40,
+    branch: 'IT'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a8"),
+    name: 'x',
+    age: 45,
+    branch: 'CSE'
+  }
+]
+mydb> db.people.find({branch:{$nin:['IT','CS']}})
+[
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a4"),
+    name: 'y',
+    age: 25,
+    branch: 'CE'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a5"),
+    name: 'z',
+    age: 30,
+    branch: 'CSE'
+  },
+  {
+    _id: ObjectId("6a3b4f7eed0add5ce45574a8"),
+    name: 'x',
+    age: 45,
+    branch: 'CSE'
+  }
+]
+mydb>
+db.people.updateOne(
+  { age: { $lt: 10 } }, 
+  { $set: { branch: "RAI", age: 21 } }
+)
+
+
+db.people.find({age:{$gt:18,$lt:25}})
+
+mydb> db.participant.find({$and :[{name:"N1"},{age:28}]})
+
+db.participant.find({age:{$not:{$eq:18}}})  This command means: "Find all documents where the age is NOT equal to 18."
+
+db.participant.find({ $nor: [ { name: "N1" }, { age: 28 } ] })  if you want to find everyone who is NOT named "N1" and NOT 28 years old, you write it like this:javascript
+
+db.ahmad.updateOne({std:{$eq:4}},{$unset:{uname:""}})
+
+
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.ahmad.updateOne({},{$mul:{std:2}})
+db.ahmad.updateOne({},{$inc:{std:3}})
+db.ahmad.updateOne({},{$inc:{std:-2}})
